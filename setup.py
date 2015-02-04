@@ -9,11 +9,9 @@ except ImportError:
 
 
 readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
     'stevedore',
-    'collectd',
     'eutester'
 ]
 
@@ -25,7 +23,7 @@ setup(
     name='eucatelemetry',
     version='0.1.0',
     description='Monitor you Eucalyptus cloud resources',
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     author='Vic Iglesias',
     author_email='viglesiasce@gmail.com',
     url='https://github.com/viglesiasce/eucatelemetry',
@@ -51,7 +49,7 @@ setup(
     ],
     provides=['eucatelemetry'], 
     entry_points={
-        'eucatelemetry.eutester': [
+        'eucatelemetry': [
             'vm_capacity = eucatelemetry.plugins.eutester.vm_capacity:VMCapacity',
             'resource_count = eucatelemetry.plugins.eutester.resource_count:ResourceCount',
             'api_latency = eucatelemetry.plugins.eutester.api_latency:APILatency'
