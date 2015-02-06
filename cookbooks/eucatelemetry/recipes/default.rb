@@ -19,7 +19,15 @@ git proxy_path do
   action :sync
 end
 
-execute "make" do
+execute "make get" do
+  cwd proxy_path
+end
+
+execute "git checkout v0.8.7" do
+  cwd "#{proxy_path}/src/github.com/influxdb/influxdb"
+end
+
+execute "make build" do
   cwd proxy_path
 end
 
