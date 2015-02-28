@@ -19,15 +19,11 @@ git proxy_path do
   action :sync
 end
 
-execute "make get" do
+execute 'export GOPATH=/opt/influxdb-collectd-proxy/; go get github.com/tools/godep; ./bin/godep restore' do
   cwd proxy_path
 end
 
-execute "git checkout v0.8.7" do
-  cwd "#{proxy_path}/src/github.com/influxdb/influxdb"
-end
-
-execute "make build" do
+execute "make" do
   cwd proxy_path
 end
 
